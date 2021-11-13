@@ -1,5 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { mongodbConfig } from './database/config/mongodbConfig';
 import { PlayersModule } from './modules/players/players.module';
 
 @Module({
@@ -7,6 +9,7 @@ import { PlayersModule } from './modules/players/players.module';
     ConfigModule.forRoot({
       isGlobal: true,
     }),
+    TypeOrmModule.forRoot(mongodbConfig()),
     PlayersModule,
   ],
 })

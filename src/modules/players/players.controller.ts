@@ -1,12 +1,13 @@
 import { Controller, Get, Param } from '@nestjs/common';
 import { PlayersService } from './players.service';
+import { Player } from './entities/player.entity';
 
 @Controller('players')
 export class PlayersController {
   constructor(private readonly playersService: PlayersService) {}
 
   @Get()
-  findAll() {
+  findAll(): Promise<Player[]> {
     return this.playersService.findAll();
   }
 
