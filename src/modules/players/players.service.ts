@@ -1,20 +1,17 @@
+import { Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { Player } from './entities/player.entity';
+import { InjectModel } from '@nestjs/mongoose';
+import { Player, PlayerDocument } from './schemas/player.schema';
 
 @Injectable()
 export class PlayersService {
-  constructor(
-      @InjectRepository(Player)
-      private readonly playersRepository: Repository<Player>
-  ) {}
+  constructor(@InjectModel(Player.name) private playerModel: Model<PlayerDocument>) {}
 
-   findAll(): Any {
-    return "Hola mundo";
+   async findAll(): Promise<Player[]> {
+    return this.playerModel.find().exec();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} player`;
-  }
+  // findOne(id: number) {
+  //   return `This action returns a #${id} player`;
+  // }
 }

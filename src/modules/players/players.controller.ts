@@ -1,6 +1,6 @@
 import { Controller, Get, Param } from '@nestjs/common';
 import { PlayersService } from './players.service';
-import { Player } from './entities/player.entity';
+import { Player } from './schemas/player.schema';
 
 @Controller('players')
 export class PlayersController {
@@ -11,8 +11,8 @@ export class PlayersController {
     return this.playersService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.playersService.findOne(+id);
-  }
+  // @Get(':id')
+  // findOne(@Param('id') id: string) {
+  //   return this.playersService.findOne(+id);
+  // }
 }
