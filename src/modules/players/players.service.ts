@@ -15,7 +15,7 @@ export class PlayersService {
     if(request.query.search){
       options = {
         $or: [
-          {id: new RegExp(request.query.search.toString(), 'i')},
+          //{id: new RegExp(request.query.search.toString(), 'i')},
           {status: new RegExp(request.query.search.toString(), 'i')},
           {nickname: new RegExp(request.query.search.toString(), 'i')},
         ]
