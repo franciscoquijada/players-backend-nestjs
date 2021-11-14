@@ -1,14 +1,15 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Param, Req } from '@nestjs/common';
 import { PlayersService } from './players.service';
 import { Player } from './schemas/player.schema';
+import {Request} from "express";
 
 @Controller('players')
 export class PlayersController {
   constructor(private readonly playersService: PlayersService) {}
 
   @Get()
-  findAll(): Promise<Player[]> {
-    return this.playersService.findAll();
+  async findAll(@Req() request: Request): Promise<any> {
+    return this.playersService.findAll(request);
   }
 
   // @Get(':id')
