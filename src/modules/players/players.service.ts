@@ -1,40 +1,46 @@
-import { Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import { Player, PlayerDocument } from './schemas/player.schema';
-import { PlayersRepository } from "./repositories/players.repository";
-import {Request} from "express";
+import { PlayersRepository } from './repositories/players.repository';
+import { PaginationDto } from '../../utils/Pagination/Pagination.dto';
+import { PaginationParams } from '../../utils/Pagination/PaginationParams';
 
 @Injectable()
 export class PlayersService {
   constructor(private readonly playersRepository: PlayersRepository) {}
 
-  async findAll(request: Request): Promise<any> {
-    let options = {};
-
-    if(request.query.search){
-      options = {
-        $or: [
-          //{id: new RegExp(request.query.search.toString(), 'i')},
-          {status: new RegExp(request.query.search.toString(), 'i')},
-          {nickname: new RegExp(request.query.search.toString(), 'i')},
-        ]
-      }
+  async findAll(paginationParams: PaginationParams): Promise<PaginationDto> {
+    const { page, search } = paginationParams;
+    if (Number(search)) {
+      return this.searchById(page, search);
     }
-    const page: number = parseInt(request.query.page as any) || 1;
-    const limit = 20;
-    const total = await this.playersRepository.getTotal(options);
-    const data = await this.playersRepository.findAll(options, page, limit);
-
-    return {
-      data,
-      total,
-      page,
-      last_page: Math.ceil(total/limit)
-    }
+    return this.searchByColumn(paginationParams);
   }
 
-  // findOne(id: number) {
-  //   return `This action returns a #${id} player`;
-  // }
+  private async searchByColumn(
+    paginationParams: PaginationParams,
+  ): Promise<PaginationDto> {
+    const { page, search, limit } = paginationParams;
+    let options = {
+      $or: [
+        { status: new RegExp(search, 'i') },
+        { nickname: new RegExp(search, 'i') },
+      ],
+    };
+    let data = await this.playersRepository.findAll(options, page, limit);
+    let total = await this.getTotal(options);
+    return new PaginationDto(data, total, page);
+  }
+
+  private async searchById(
+    page: number,
+    search: string,
+  ): Promise<PaginationDto> {
+    let options = { id: search };
+    let data = await this.playersRepository.findOne(options);
+    let total = await this.getTotal(options);
+    return new PaginationDto(data, total, page);
+  }
+
+  private async getTotal(options: {}): Promise<number> {
+    return await this.playersRepository.getTotal(options);
+  }
 }

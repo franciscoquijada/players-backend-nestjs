@@ -1,19 +1,16 @@
-import { Controller, Get, Param, Req } from '@nestjs/common';
+import { Controller, Get, Query } from '@nestjs/common';
 import { PlayersService } from './players.service';
-import { Player } from './schemas/player.schema';
-import {Request} from "express";
+import { PaginationParams } from '../../utils/Pagination/PaginationParams';
+import { PaginationDto } from '../../utils/Pagination/Pagination.dto';
 
 @Controller('players')
 export class PlayersController {
   constructor(private readonly playersService: PlayersService) {}
 
   @Get()
-  async findAll(@Req() request: Request): Promise<any> {
-    return this.playersService.findAll(request);
+  async findAll(
+    @Query() paginationParams: PaginationParams,
+  ): Promise<PaginationDto> {
+    return this.playersService.findAll(paginationParams);
   }
-
-  // @Get(':id')
-  // findOne(@Param('id') id: string) {
-  //   return this.playersService.findOne(+id);
-  // }
 }
