@@ -5,9 +5,11 @@ import { Player, PlayerDocument } from './schemas/player.schema';
 
 @Injectable()
 export class PlayersService {
-  constructor(@InjectModel(Player.name) private playerModel: Model<PlayerDocument>) {}
+  constructor(
+    @InjectModel(Player.name) private playerModel: Model<PlayerDocument>,
+  ) {}
 
-   async findAll(): Promise<Player[]> {
+  async findAll(): Promise<Player[]> {
     return this.playerModel.find().exec();
   }
 
