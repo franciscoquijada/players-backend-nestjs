@@ -19,6 +19,7 @@ export class PlayersService {
     paginationParams: PaginationParams,
   ): Promise<PaginationDto> {
     const { page, search, limit } = paginationParams;
+
     let options = {
       $or: [
         { status: new RegExp(search, 'i') },
