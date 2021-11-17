@@ -1,12 +1,12 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { APIPrefix } from './constants/common';
+import { apiV1 } from './configs/api.configs';
 import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, { cors: true });
   app.useGlobalPipes(new ValidationPipe());
-  app.setGlobalPrefix(APIPrefix.Version);
+  app.setGlobalPrefix(`${apiV1.api}/${apiV1.version}`);
   await app.listen(3000);
 }
 bootstrap();

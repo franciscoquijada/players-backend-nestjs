@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PlayersRepository } from './repositories/players.repository';
-import { PaginationDto } from '../../utils/Pagination/Pagination.dto';
-import { PaginationParams } from '../../utils/Pagination/PaginationParams';
+import { PaginationDto } from '../../utils/Pagination/pagination.dto';
+import { PaginationParams } from '../../utils/Pagination/paginationParams';
 
 @Injectable()
 export class PlayersService {

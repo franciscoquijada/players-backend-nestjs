@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
-import { mongodbConfig } from './database/config/mongodbConfig';
+import { mongoConfig } from './database/config/mongo.config';
 import { PlayersModule } from './modules/players/players.module';
 
 @Module({
@@ -9,7 +9,7 @@ import { PlayersModule } from './modules/players/players.module';
     ConfigModule.forRoot({
       isGlobal: true,
     }),
-    MongooseModule.forRoot(mongodbConfig()),
+    MongooseModule.forRoot(mongoConfig()),
     PlayersModule,
   ],
 })

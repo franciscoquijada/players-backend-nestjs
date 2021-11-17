@@ -1,7 +1,7 @@
 import { Controller, Get, Query } from '@nestjs/common';
 import { PlayersService } from './players.service';
-import { PaginationParams } from '../../utils/Pagination/PaginationParams';
-import { PaginationDto } from '../../utils/Pagination/Pagination.dto';
+import { PaginationParams } from '../../utils/Pagination/paginationParams';
+import { PaginationDto } from '../../utils/Pagination/pagination.dto';
 
 @Controller('players')
 export class PlayersController {
