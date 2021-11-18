@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { PlayersService } from './players.service';
-import { PaginationParams } from '../../utils/Pagination/paginationParams';
+import { PaginationParams } from '../../../utils/Pagination/paginationParams';
 
 describe('PlayersService', () => {
   let service: PlayersService;

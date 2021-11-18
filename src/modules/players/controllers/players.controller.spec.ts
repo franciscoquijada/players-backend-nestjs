@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { PlayersController } from './players.controller';
-import { PlayersService } from './players.service';
-import {PaginationParams} from "../../utils/Pagination/paginationParams";
+import { PlayersService } from '../services/players.service';
+import {PaginationParams} from "../../../utils/Pagination/paginationParams";
 
 describe('PlayersController', () => {
   let controller: PlayersController;
