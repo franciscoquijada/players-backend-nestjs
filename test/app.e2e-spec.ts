@@ -2,7 +2,7 @@ import { HttpStatus } from '@nestjs/common';
 import * as request from 'supertest';
 import { apiV1 } from '../src/configs/api.configs';
 
-describe('AppController (e2e)', () => {
+describe('Players (e2e)', () => {
   const baseUrlApi = `http://localhost:3000/${apiV1.api}/${apiV1.version}`;
   const playerUrl = '/players';
   const typeJsonUtf8 = 'application/json; charset=utf-8';
