@@ -31,8 +31,8 @@ describe('AppController (e2e)', () => {
       });
   });
 
-  it('it should list a one player', () => {
-    const searchParam = '1';
+  it('it should list a one player with search by id', () => {
+    const searchParam = 'search';
     return request(baseUrlApi)
       .get(playerUrl)
       .query({ [searchParam]: '1' })
@@ -40,9 +40,8 @@ describe('AppController (e2e)', () => {
       .expect('Content-Type', typeJsonUtf8)
       .expect((response: request.Response) => {
         const { _id, id, nickname, status, balance, avatar } =
-          response.body.data[0];
+          response.body.data;
         expect(typeof response.body.data).toBe('object');
-        expect(typeof response.body.data[0]).toBe('object');
         expect(typeof _id).toBe('string');
         expect(typeof id).toBe('number');
         expect(typeof nickname).toBe('string');
