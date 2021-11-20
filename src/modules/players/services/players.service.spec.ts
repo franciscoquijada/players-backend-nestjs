@@ -1,12 +1,12 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { PlayersService } from './players.service';
-import { PaginationParams } from '../../../utils/Pagination/paginationParams';
+import { FindWithPaginationDto } from '../../../utils/pagination/findWithPagination.dto';
 
 describe('PlayersService', () => {
   let service: PlayersService;
 
   const mockPlayersRepository = {
-    findAll: jest.fn(() => {
+    findWithPagination: jest.fn(() => {
       return {
         data: {
           _id: '608c3386ef1f854beb5fe284',
@@ -38,25 +38,23 @@ describe('PlayersService', () => {
     expect(service).toBeDefined();
   });
 
-  //Que esta devolviendo la lista de jugadores
   it('should list players', async () => {
-    const paginationParams: PaginationParams = {
+    const findWithPaginationDto: FindWithPaginationDto = {
       page: 1,
       limit: 20,
       search: '1',
     };
-    expect(await service.findAll(paginationParams)).toEqual({
+
+    expect(await service.findWithPagination(findWithPaginationDto)).toEqual({
       data: expect.any(Object),
       total: expect.any(Number),
       page: '1',
     });
 
-    expect(
-      mockPlayersRepository.findAll,
-    ).toHaveBeenCalledTimes(1);
+    expect(mockPlayersRepository.findWithPagination).toHaveBeenCalledTimes(1);
 
-    expect(mockPlayersRepository.findAll).toHaveBeenCalledWith(
-      paginationParams,
+    expect(mockPlayersRepository.findWithPagination).toHaveBeenCalledWith(
+      findWithPaginationDto,
     );
   });
 });

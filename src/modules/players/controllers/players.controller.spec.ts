@@ -1,14 +1,14 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { PlayersController } from './players.controller';
 import { PlayersService } from '../services/players.service';
-import {PaginationParams} from "../../../utils/Pagination/paginationParams";
+import {FindWithPaginationDto} from "../../../utils/pagination/findWithPagination.dto";
 
 describe('PlayersController', () => {
-  let controller: PlayersController;
+  let playersController: PlayersController;
   let httpCodeError = 400;
 
   const mockPlayersService = {
-    findAll: jest.fn( () => {
+    findWithPagination: jest.fn( () => {
       return /*paginationParams.limit > 1 ? */{
         data: {
           _id: "608c3386ef1f854beb5fe284",
@@ -39,26 +39,28 @@ describe('PlayersController', () => {
       .useValue(mockPlayersService)
       .compile();
 
-    controller = module.get<PlayersController>(PlayersController);
+    playersController = module.get<PlayersController>(PlayersController);
   });
 
   it('should be defined', () => {
-    expect(controller).toBeDefined();
+    expect(playersController).toBeDefined();
   });
 
   it('should list players', async () => {
-    const paginationParams: PaginationParams = {page: 1, limit: 20, search: '1'};
-    expect(await controller.findAll(paginationParams)).toEqual({
+    const findWithPaginationDto: FindWithPaginationDto = {page: 1, limit: 20, search: '1'};
+
+    expect(await playersController.findWithPagination(findWithPaginationDto)).toEqual({
       data: expect.any(Object),
       total: expect.any(Number),
       page: '1'
     });
 
-    expect(mockPlayersService.findAll).toHaveBeenCalledTimes(1);
+    expect(mockPlayersService.findWithPagination).toHaveBeenCalledTimes(1);
 
-    expect(mockPlayersService.findAll).toHaveBeenCalledWith(paginationParams);
+    expect(mockPlayersService.findWithPagination).toHaveBeenCalledWith(findWithPaginationDto);
 
   });
+
 
   // it('should show error for limit less than 1', async () => {
   //   const paginationParams: PaginationParams = {page: 1, limit: 0, search: '1'};

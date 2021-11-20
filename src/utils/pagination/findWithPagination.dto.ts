@@ -1,7 +1,7 @@
 import { IsNumber, Min, IsOptional } from 'class-validator';
 import { Type } from 'class-transformer';
 
-export class PaginationParams {
+export class FindWithPaginationDto {
   @IsOptional()
   @Type(() => Number)
   @IsNumber()
@@ -12,7 +12,7 @@ export class PaginationParams {
   @Type(() => Number)
   @IsNumber()
   @Min(1)
-  limit?: number;
+  limit?: number = 20;
 
   @IsOptional()
   @Type(() => String)
