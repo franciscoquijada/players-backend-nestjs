@@ -13,19 +13,20 @@ export class PlayersRepository {
     options: {},
     page: number = 1,
     limit: number = 20,
-  ): Promise<Player[]> {
-    return await this.playerModel
+  ): Promise<any> {
+    const data = await this.playerModel
       .find(options)
       .sort({ id: 1 })
       .skip((page - 1) * limit)
       .limit(Number(limit));
+    const total = await this.playerModel
+        .find(options)
+        .count();
+    return { data, total };
   }
 
   async findOne(filter: {}): Promise<Player> {
     return await this.playerModel.findOne(filter);
   }
 
-  async getTotal(options: {}): Promise<number> {
-    return await this.playerModel.estimatedDocumentCount(options);
-  }
 }

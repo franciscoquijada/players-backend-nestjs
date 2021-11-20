@@ -26,8 +26,7 @@ export class PlayersService {
         { nickname: new RegExp(search, 'i') },
       ],
     };
-    let data = await this.playersRepository.findAll(options, page, limit);
-    let total = await this.getTotal(options);
+    let {data, total} = await this.playersRepository.findAll(options, page, limit);
     return new PaginationDto(data, total, page);
   }
 
@@ -37,11 +36,7 @@ export class PlayersService {
   ): Promise<PaginationDto> {
     let options = { id: search };
     let data = await this.playersRepository.findOne(options);
-    let total = await this.getTotal(options);
-    return new PaginationDto(data, total, page);
+    return new PaginationDto(data, 1, page);
   }
 
-  private async getTotal(options: {}): Promise<number> {
-    return await this.playersRepository.getTotal(options);
-  }
 }
