@@ -32,7 +32,7 @@ export class PlayersRepository {
       .find(options)
       .sort({ id: 1 })
       .skip((page - 1) * limit)
-      .limit(Number(limit));
+      .limit(limit);
     total = await this.playerModel.find(options).count();
     return new PaginationDto(data, total, page);
   }
