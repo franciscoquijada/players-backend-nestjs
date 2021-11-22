@@ -1,4 +1,4 @@
-export enum apiV1  {
+export enum apiV1 {
   api = 'api',
-  version = 'v1'
+  version = 'v1',
 }
