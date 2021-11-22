@@ -39,12 +39,18 @@ export class PlayersRepository {
         { nickname: new RegExp(search, 'i') },
       ],
     };
+    const sortBy = { id: 1 };
     const data = await this.playerModel
       .find(options)
-      .sort({ id: 1 })
-      .skip((page - 1) * limit)
+      .sort(sortBy)
+      .skip(this.calculateSkip(page, limit))
       .limit(limit);
     const total = await this.playerModel.find(options).count();
     return new PaginationDto(data, total, page);
+  }
+
+  private calculateSkip( page: number, limit: number
+  ): number {
+    return (page - 1) * limit;
   }
 }
