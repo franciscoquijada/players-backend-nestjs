@@ -14,26 +14,37 @@ export class PlayersRepository {
   async findWithPagination(
     findWithPaginationDto: FindWithPaginationDto,
   ): Promise<PaginationDto> {
-    const { search, page, limit } = findWithPaginationDto;
-    let data;
-    let total;
-    if (Number(search)) {
-      total = 1;
-      data = await this.playerModel.find({ id: search });
-      return new PaginationDto(data, total, page);
+    if (Number(findWithPaginationDto.search)) {
+      return this.findById(findWithPaginationDto);
     }
-    let options = {
+    return this.findByStatusAndNickname(findWithPaginationDto);
+  }
+
+  private async findById(
+    findWithPaginationDto: FindWithPaginationDto,
+  ): Promise<PaginationDto> {
+    const { search, page } = findWithPaginationDto;
+    const total = 1;
+    const data = await this.playerModel.find({ id: search });
+    return new PaginationDto(data, total, page);
+  }
+
+  private async findByStatusAndNickname(
+    findWithPaginationDto: FindWithPaginationDto,
+  ): Promise<PaginationDto> {
+    const { search, page, limit } = findWithPaginationDto;
+    const options = {
       $or: [
         { status: new RegExp(search, 'i') },
         { nickname: new RegExp(search, 'i') },
       ],
     };
-    data = await this.playerModel
+    const data = await this.playerModel
       .find(options)
       .sort({ id: 1 })
       .skip((page - 1) * limit)
       .limit(limit);
-    total = await this.playerModel.find(options).count();
+    const total = await this.playerModel.find(options).count();
     return new PaginationDto(data, total, page);
   }
 }
