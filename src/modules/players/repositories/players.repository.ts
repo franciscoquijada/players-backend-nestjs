@@ -49,8 +49,7 @@ export class PlayersRepository {
     return new PaginationDto(data, total, page);
   }
 
-  private calculateSkip( page: number, limit: number
-  ): number {
+  private calculateSkip(page: number, limit: number): number {
     return (page - 1) * limit;
   }
 }
