@@ -4,6 +4,6 @@ DATABASE_USER = mydatabaseuser
 DATABASE_PASSWORD = myPassword
 DATABASE_NAME = myDataBaseName
 PORT = myNumberPort
-HOST = myHostToTestCypress
+HOST = myHost
 #Whitelist url for cors in this format, (each url is separated by comma): http://localhost:8000,http://dominio2.com
 WHITE_LIST = myUrl1,myUrl2
