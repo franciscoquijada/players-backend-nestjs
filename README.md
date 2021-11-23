@@ -15,13 +15,7 @@ It was built with the nest framework [Nest](https://github.com/nestjs/nest).
 
 - Clone this repository.
 - Go to the root directory of the project.
-- Create file .env with this content:
-   - `DATABASE_SRV= 
-      DATABASE_USER= 
-      DATABASE_PASSWORD= 
-     DATABASE_NAME= 
-     PORT= 
-     HOST=`
+- Create file .env, you can follow the example of the .envExample file in the root of proyect.
 - Install the dependencies with this command: `npm install` or `yarn install`.
 - Execute the project: `npm start`.
 
