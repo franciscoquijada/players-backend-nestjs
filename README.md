@@ -1,5 +1,5 @@
   <h1 align="center"> 
-    Api Players 
+    Api Players
   </h1>
 
   <p align="center">
