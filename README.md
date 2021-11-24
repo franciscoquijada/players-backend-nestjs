@@ -29,7 +29,7 @@ It was built with the nest framework [Nest](https://github.com/nestjs/nest).
     - repositories
     - schemas
     - services
-  - utils
+  - commons
     - pagination
     
 ## Installation
