@@ -43,10 +43,13 @@ describe('PlayersRepository', () => {
   });
 
   it('should return value when search by id', async () => {
+    const findWithPaginationDto: FindWithPaginationDto = {
+      page: 1,
+      limit: 1,
+      search: '1',
+    };
     await expect(
-      playersRepository.findWithPagination(
-        new FindWithPaginationDto(1, 1, '1'),
-      ),
+      playersRepository.findWithPagination(findWithPaginationDto),
     ).resolves.toEqual(expectedValue);
   });
 });
