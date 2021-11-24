@@ -15,7 +15,7 @@ export class FindWithPaginationDto {
   limit?: number = 20;
 
   @IsOptional()
-  @Matches(/^[a-z0-9\u00f1\u00d1]+$/i, {
+  @Matches(/^[a-z0-9\u00f1\u00d1 _]+$/i, {
     message: 'search $value must be numbers or letters',
   })
   @Type(() => String)
