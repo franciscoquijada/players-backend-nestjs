@@ -2,8 +2,8 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { PlayersRepository } from './players.repository';
 import { Player } from '../schemas/player.schema';
 import { getModelToken } from '@nestjs/mongoose';
-import { FindWithPaginationDto } from '../../../shared/pagination/findWithPagination.dto';
-import { PaginationDto } from '../../../shared/pagination/pagination.dto';
+import { FindWithPaginationDto } from '../../../commons/pagination/findWithPagination.dto';
+import { PaginationDto } from '../../../commons/pagination/pagination.dto';
 
 describe('PlayersRepository', () => {
   let playersRepository: PlayersRepository;

@@ -2,8 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Player, PlayerDocument } from '../schemas/player.schema';
-import { PaginationDto } from '../../../shared/pagination/pagination.dto';
-import { FindWithPaginationDto } from '../../../shared/pagination/findWithPagination.dto';
+import { PaginationDto } from '../../../commons/pagination/pagination.dto';
+import { FindWithPaginationDto } from '../../../commons/pagination/findWithPagination.dto';
 
 @Injectable()
 export class PlayersRepository {

@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { PlayersController } from './players.controller';
 import { PlayersService } from '../services/players.service';
-import { FindWithPaginationDto } from '../../../shared/pagination/findWithPagination.dto';
+import { FindWithPaginationDto } from '../../../commons/pagination/findWithPagination.dto';
 
 describe('PlayersController', () => {
   let playersController: PlayersController;

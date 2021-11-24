@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { PlayersService } from './players.service';
-import { FindWithPaginationDto } from '../../../shared/pagination/findWithPagination.dto';
+import { FindWithPaginationDto } from '../../../commons/pagination/findWithPagination.dto';
 
 describe('PlayersService', () => {
   let service: PlayersService;
