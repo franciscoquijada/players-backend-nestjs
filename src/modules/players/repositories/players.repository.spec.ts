@@ -1,31 +1,52 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { PlayersRepository } from './players.repository';
-import { Player, PlayerDocument } from '../schemas/player.schema';
+import { Player } from '../schemas/player.schema';
 import { getModelToken } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import { FindWithPaginationDto } from '../../../utils/pagination/findWithPagination.dto';
+import { PaginationDto } from '../../../utils/pagination/pagination.dto';
 
 describe('PlayersRepository', () => {
-  let mockPlayerModel: Model<PlayerDocument>;
   let playersRepository: PlayersRepository;
+
+  const findReturn = {
+    _id: '608c3386ef1f854beb5fe284',
+    id: 1,
+    nickname: 'ooy eqrceli',
+    status: 'rlñlw brhrka',
+    balance: 498724,
+    avatar: 'drive.google.com/thumbnail?id=17fBzEwLjVC4wbHBi1O64PA-D-i8G_Z4b',
+  };
+
+  const mockPlayerModel = {
+    find: jest.fn(() => {
+      return findReturn;
+    }),
+  };
+
+  const expectedValue = new PaginationDto(findReturn, 1, 1);
 
   beforeAll(async () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         {
           provide: getModelToken(Player.name),
-          useValue: Model,
+          useValue: mockPlayerModel,
         },
         PlayersRepository,
       ],
     }).compile();
-
-    mockPlayerModel = module.get<Model<PlayerDocument>>(
-      getModelToken(Player.name),
-    );
     playersRepository = module.get<PlayersRepository>(PlayersRepository);
   });
 
   it('should be defined', () => {
     expect(playersRepository).toBeDefined();
+  });
+
+  it('should return value when search by id', async () => {
+    await expect(
+      playersRepository.findWithPagination(
+        new FindWithPaginationDto(1, 1, '1'),
+      ),
+    ).resolves.toEqual(expectedValue);
   });
 });
