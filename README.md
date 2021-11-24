@@ -63,3 +63,7 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
+## Docker
+
+You can download the associated docker image in the Packages section in the right menu of github.
+
