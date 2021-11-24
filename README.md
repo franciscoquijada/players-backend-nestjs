@@ -67,20 +67,7 @@ $ npm run test:cov
 
 You can test in postman:
 
-<div class="postman-run-button"
-data-postman-action="collection/fork"
-data-postman-var-1="15086964-34010f66-2f48-46e6-9733-bc16af3b8219"
-data-postman-collection-url="entityId=15086964-34010f66-2f48-46e6-9733-bc16af3b8219&entityType=collection&workspaceId=a2f21d4d-41d4-4207-8df2-732535a2929a"
-data-postman-param="env%5BHeroku%5D=W3sia2V5IjoidXJsIiwidmFsdWUiOiJodHRwczovL3BsYXllcnNhcGluZXN0Lmhlcm9rdWFwcC5jb20iLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6ImFwaVZlcnNpb24iLCJ2YWx1ZSI6ImFwaS92MSIsImVuYWJsZWQiOnRydWV9XQ=="></div>
-<script type="text/javascript">
-  (function (p,o,s,t,m,a,n) {
-    !p[s] && (p[s] = function () { (p[t] || (p[t] = [])).push(arguments); });
-    !o.getElementById(s+t) && o.getElementsByTagName("head")[0].appendChild((
-      (n = o.createElement("script")),
-      (n.id = s+t), (n.async = 1), (n.src = m), n
-    ));
-  }(window, document, "_pm", "PostmanRunObject", "https://run.pstmn.io/button.js"));
-</script>
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/15086964-34010f66-2f48-46e6-9733-bc16af3b8219?action=collection%2Ffork&collection-url=entityId%3D15086964-34010f66-2f48-46e6-9733-bc16af3b8219%26entityType%3Dcollection%26workspaceId%3Da2f21d4d-41d4-4207-8df2-732535a2929a#?env%5BHeroku%5D=W3sia2V5IjoidXJsIiwidmFsdWUiOiJodHRwczovL3BsYXllcnNhcGluZXN0Lmhlcm9rdWFwcC5jb20iLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6ImFwaVZlcnNpb24iLCJ2YWx1ZSI6ImFwaS92MSIsImVuYWJsZWQiOnRydWV9XQ==)
 
 ## Docker
 
