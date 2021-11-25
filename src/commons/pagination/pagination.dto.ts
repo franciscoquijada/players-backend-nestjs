@@ -1,5 +1,5 @@
-import {Type} from "class-transformer";
-import {IsNumber, Min, IsOptional, IsArray} from 'class-validator';
+import { Type } from 'class-transformer';
+import { IsNumber, Min, IsOptional, IsArray } from 'class-validator';
 
 export class PaginationDto {
   @IsArray()
