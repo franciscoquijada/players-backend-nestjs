@@ -52,9 +52,11 @@ $ npm run start:prod
 ## Test
 
 ```bash
+This project has unit tests, which you can run with the command:
 # unit tests
 $ npm run test
 
+This project has Tests E2E, which you can run with the command:
 # e2e tests
 $ npm run test:e2e
 

@@ -15,12 +15,11 @@ describe('Players (e2e)', () => {
       .expect(HttpStatus.OK)
       .expect('Content-Type', typeJsonUtf8)
       .expect((response: request.Response) => {
-        const { _id, id, nickname, status, balance, avatar } =
+        const { id, nickname, status, balance, avatar } =
           response.body.data[0];
         expect(response.body.data).toHaveLength(20);
         expect(typeof response.body.data).toBe('object');
         expect(typeof response.body.data[0]).toBe('object');
-        expect(typeof _id).toBe('string');
         expect(typeof id).toBe('number');
         expect(typeof nickname).toBe('string');
         expect(typeof status).toBe('string');
@@ -39,10 +38,9 @@ describe('Players (e2e)', () => {
       .expect(HttpStatus.OK)
       .expect('Content-Type', typeJsonUtf8)
       .expect((response: request.Response) => {
-        const { _id, id, nickname, status, balance, avatar } =
-          response.body.data;
+        const { id, nickname, status, balance, avatar } =
+          response.body.data[0];
         expect(typeof response.body.data).toBe('object');
-        expect(typeof _id).toBe('string');
         expect(typeof id).toBe('number');
         expect(typeof nickname).toBe('string');
         expect(typeof status).toBe('string');
