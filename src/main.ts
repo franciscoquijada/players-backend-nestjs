@@ -2,10 +2,22 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { apiV1 } from './configs/api.configs';
 import { ValidationPipe } from '@nestjs/common';
+import {DocumentBuilder, SwaggerModule} from "@nestjs/swagger";
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  const whitelist = process.env.WHITE_LIST.split(',');
+
+    const config = new DocumentBuilder()
+        .setTitle('Players Api')
+        .setDescription('Api to exposed players information')
+        .setVersion('1.0')
+        .addTag('players')
+        .build();
+    const document = SwaggerModule.createDocument(app, config);
+    SwaggerModule.setup('api', app, document);
+
+
+    const whitelist = process.env.WHITE_LIST.split(',');
   app.enableCors({
     origin: function (origin, callback) {
       if (!origin || whitelist.indexOf(origin) !== -1) {
