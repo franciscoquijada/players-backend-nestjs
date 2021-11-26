@@ -66,6 +66,7 @@ $ npm run test:cov
 ## Api Documentation
 
 When running the project you can verify the api documentation through [Swagger](https://swagger.io/) using the url: YourUrl/api/
+in this deploy: [https://playersapinest.herokuapp.com/api/](https://playersapinest.herokuapp.com/api/)
 
 ## Postman
 
