@@ -25,7 +25,7 @@ export class PlayersService {
   ): Promise<PaginationDto> {
     const { search, page } = findWithPaginationDto;
     const total = 1;
-    const data = await this.playerModel.find({ id: search });
+    const data = await this.playerModel.find({ id: search }).select(['-_id']);
     return new PaginationDto(data, total, page);
   }
 

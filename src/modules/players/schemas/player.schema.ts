@@ -6,9 +6,6 @@ export type PlayerDocument = Player & Document;
 @Schema()
 export class Player {
   @Prop()
-  _id: Types.ObjectId;
-
-  @Prop()
   id: number;
 
   @Prop()
