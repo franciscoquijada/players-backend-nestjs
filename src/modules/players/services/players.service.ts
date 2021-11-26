@@ -43,6 +43,7 @@ export class PlayersService {
     const skip = PlayersService.calculateSkip(page, limit);
     const data = await this.playerModel
       .find(options)
+      .select(['-_id'])
       .sort(sortBy)
       .skip(skip)
       .limit(limit);
