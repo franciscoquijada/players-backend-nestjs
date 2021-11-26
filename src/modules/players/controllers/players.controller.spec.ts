@@ -10,7 +10,6 @@ describe('PlayersController', () => {
     findWithPagination: jest.fn(() => {
       return {
         data: {
-          _id: '608c3386ef1f854beb5fe284',
           id: 1,
           nickname: 'ooy eqrceli',
           status: 'rlñlw brhrka',
