@@ -20,17 +20,15 @@ It was built with the nest framework [Nest](https://github.com/nestjs/nest).
 - Execute the project: `npm start`.
 
 ## Project architecture
-- configs
-- database
-  - config
-- modules 
-  - players 
-    - controllers
-    - repositories
-    - schemas
-    - services
-  - commons
-    - pagination
+- **configs**: Contains constants for the definition of the api version and the prefix used in the urls
+- **database**: Contains constants the connection string used to connect with mongoose.
+- **commons**: Contains classes that are shared by system modules.
+  - **pagination:**  Dto related to pagination.
+- **modules**: Contains the modules that make up the system
+  - **players**: Module associated with the players entity
+    - **controllers**: Controllers associated with the players entity
+    - **schemas**: Contains the schema player
+    - **services**: Contains the services associated with the players entity
     
 ## Installation
 
@@ -63,6 +61,10 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
+## Api Documentation
+
+When running the project you can verify the api documentation through [Swagger](https://swagger.io/) using the url: YourUrl/api/
+
 ## Postman
 
 You can test in postman:
