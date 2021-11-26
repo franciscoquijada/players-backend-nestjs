@@ -29,6 +29,12 @@ It was built with the nest framework [Nest](https://github.com/nestjs/nest).
     - **controllers**: Controllers associated with the players entity
     - **schemas**: Contains the schema player
     - **services**: Contains the services associated with the players entity
+
+## Diagrams C4 Model
+
+<p align="center">
+  <img src="./images_readme/architecture.png" width="620" alt="architecture c4" />
+</p>
     
 ## Installation
 
