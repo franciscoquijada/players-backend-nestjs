@@ -1,4 +1,11 @@
-import {IsNumber, Min, IsOptional, Matches, IsString, IsInt} from 'class-validator';
+import {
+  IsNumber,
+  Min,
+  IsOptional,
+  Matches,
+  IsString,
+  IsInt,
+} from 'class-validator';
 import { Type } from 'class-transformer';
 
 export class FindWithPaginationDto {
