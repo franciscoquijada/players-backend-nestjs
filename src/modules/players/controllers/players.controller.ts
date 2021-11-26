@@ -2,7 +2,7 @@ import { Controller, Get, Query } from '@nestjs/common';
 import { PlayersService } from '../services/players.service';
 import { FindWithPaginationDto } from '../../../commons/pagination/findWithPagination.dto';
 import { PaginationDto } from '../../../commons/pagination/pagination.dto';
-import {ApiInternalServerErrorResponse, ApiOkResponse, ApiOperation, ApiTags} from "@nestjs/swagger";
+import {ApiOkResponse, ApiOperation, ApiTags} from "@nestjs/swagger";
 
 @Controller('players')
 @ApiTags('Players')
@@ -16,9 +16,6 @@ export class PlayersController {
   @ApiOkResponse({
     description: 'Retrieved pagination players successfully',
     type: PaginationDto
-  })
-  @ApiInternalServerErrorResponse({
-    description: 'Internal server error',
   })
   async findWithPagination(
     @Query() findWithPaginationDto: FindWithPaginationDto,
